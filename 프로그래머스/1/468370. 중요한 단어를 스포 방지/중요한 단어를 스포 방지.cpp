@@ -6,36 +6,36 @@ using namespace std;
 
 int solution(string message, vector<vector<int>> spoiler_ranges) 
 {
-   
-    int cur_idx = 0;
-    vector<string>spo;
-    set<string>no_spo;
     stringstream ss(message);
     string word;
+    vector<string>spo;
+    set<string>no_spo;
+    int cur_idx = 0;
     while(ss >> word)
     {
         int ft = message.find(word,cur_idx);
-        int lt = ft + word.size() -1;
-        bool check = false;
+        int lt = ft + word.size() - 1;
+        bool check = true;
         cur_idx = lt + 1;
-        for(auto &arr : spoiler_ranges)
+        for(auto &spo_r : spoiler_ranges)
         {
-            if(ft <= arr[1] && arr[0] <= lt)
+            if(ft <= spo_r[1] && spo_r[0] <= lt)
             {
                 spo.push_back(word);
-                check = true;
+                check = false;
                 break;
-            }                           
+            }                            
         }
-         if(!check)
-                no_spo.insert(word);                    
+        if(check)
+            no_spo.insert(word);
     }
     
-    set<string>import_w;
-    for(string word : spo)
+    set<string>import_word;
+    for(string str : spo)
     {
-        if(!import_w.count(word) && !no_spo.count(word))
-            import_w.insert(word);
+        if(!import_word.count(str) && !no_spo.count(str))
+            import_word.insert(str);
     }
-    return import_w.size();
+    
+    return import_word.size();
 }

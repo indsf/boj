@@ -1,10 +1,10 @@
 # [level 1] 중요한 단어를 스포 방지 - 468370 
 
-[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/468370) 
+[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/468370?language=cpp) 
 
 ### 성능 요약
 
-메모리: 4.22 MB, 시간: 0.91 ms
+메모리: 4.22 MB, 시간: 0.64 ms
 
 ### 구분
 
@@ -16,7 +16,7 @@
 
 ### 제출 일자
 
-2026년 03월 25일 22:58:57
+2026년 03월 26일 14:58:00
 
 ### 문제 설명
 
