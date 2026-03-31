@@ -2,37 +2,38 @@
 #include <set>
 #include <queue>
 using namespace std;
-int dx[2] = {-1,1};
-int n,k;
-long long result;
+
 queue<int>q;
 set<int>visit;
+int dx[2] = {-1,1};
+int n,k;
+long long ans;
 
 long long bfs()
 {
-    int no_angry = 1;
+    int unluck = 1;
     while(!q.empty())
     {
         int size = q.size();
-        for(int j = 0;j<size;j++)
+        for(int i = 0;i<size;i++)
         {
-            int x = q.front();
+            int val = q.front();
             q.pop();
-            for(int i = 0;i<2;i++)
+            for(int j = 0;j<2;j++)
             {
-                int vx = x + dx[i];
+                int vx = val + dx[j];
                 if(visit.count(vx))
                     continue;
                 q.push(vx);
                 visit.insert(vx);
-                result += no_angry;
+                ans += unluck;
                 if(!--k)
-                    return result;
+                    return ans;
             }
         }
-        no_angry++;
+        unluck++;
     }
-    return result;
+    return ans;
 }
 
 int main()
@@ -41,17 +42,13 @@ int main()
     cin.tie(0);
 
     cin >> n >> k;
-
     for(int i = 0;i<n;i++)
     {
         int num;
-
         cin >> num;
-        q.push(num);        
-        visit.insert(num);
+        q.push(num);
+        visit.insert(num);        
     }
-    long long ans = bfs();
-    cout << ans << '\n';
+    cout << bfs() << '\n';
     return 0;
 }
-
