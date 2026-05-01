@@ -3,34 +3,27 @@
 
 using namespace std;
 
-//int visit[22];
+int ans;
 
-int dfs(int cur,int val,int target,vector<int>&numbers)
+void dfs(vector<int>&n,int cur,int target,int val)
 {
-    if(cur == numbers.size())
+    if(cur == n.size())
     {
-        if(val == target)
-        {
-            val = 1;
-            return val;
-        }
-            
-        else 
-        {
-            val = 0;
-            return val;
-        }            
+        if(target == val)        
+            ans++;                    
+        return ;
     }
-        
     
-    return dfs(cur+1,val+numbers[cur],target,numbers) + dfs(cur+1,val-numbers[cur],target,numbers);
-            
-
+        
+    dfs(n,cur+1,target,val+n[cur]);
+    dfs(n,cur+1,target,val-n[cur]);
+        
+        
+ 
 }
 
-int solution(vector<int> numbers, int target) 
-{
-    int answer = 0;
-    answer = dfs(0,0,target,numbers);
-    return answer;
+int solution(vector<int> numbers, int target) {
+    //int answer = 0;
+    dfs(numbers,0,target,0);
+    return ans;
 }
