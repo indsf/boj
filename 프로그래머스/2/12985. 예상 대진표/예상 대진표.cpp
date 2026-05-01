@@ -7,9 +7,9 @@ int solution(int n, int a, int b)
 {
     int answer = 0;
     
-    while(n != 0)
+    while(a!=b)
     {        
-        int len = abs(a-b);
+        //int len = abs(a-b);
         
         answer++;       
         a = (a/2)+ (a%2);
